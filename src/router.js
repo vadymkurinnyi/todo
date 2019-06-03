@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from './views/Dashboard.vue'
 import Projects from './views/Projects'
 import Team from './views/Team'
+import UserProfile from './views/UserProfile'
 import Login from './components/LoginForm'
 import {auth} from '@/fb'
 
@@ -33,6 +34,14 @@ const router = new Router({
       path: '/team',
       name: 'team',
       component: Team,
+      meta: {
+        requiresAuth: true,
+      }
+    },
+    {
+      path: '/profile',
+      name: 'profile',
+      component: UserProfile,
       meta: {
         requiresAuth: true,
       }

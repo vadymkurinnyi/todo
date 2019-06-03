@@ -42,14 +42,8 @@ export default {
   },
   methods: {
     onLogin() {
-        console.log(this.login);
-        console.log(this.password);
-
       auth.signInWithEmailAndPassword(this.login, this.password).then(cred => {
-          
-          console.log(cred);
         const url = this.$route.query.redirect || "/dashboard";
-        console.log(url);
         this.$router.push(url);
       });
     }
