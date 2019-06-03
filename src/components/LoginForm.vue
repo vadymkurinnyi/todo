@@ -32,7 +32,7 @@
 
 <script>
 import {auth} from '@/fb'
-window.auth = auth;
+window.auth = auth;//for test
 export default {
   data() {
     return {

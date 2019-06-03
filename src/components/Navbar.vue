@@ -22,7 +22,7 @@
           </v-list-tile>
         </v-list>
       </v-menu>
-      <v-btn flat color="grey">
+      <v-btn flat color="grey" @click="signOut" to="/login">
         <span>Sign Out</span>
         <v-icon right>exit_to_app</v-icon>
       </v-btn>
@@ -37,7 +37,7 @@
           <p class="white--text subheading mt-1">The Net Ninja</p>
         </v-flex>
         <v-flex class="mt-4 mb-3">
-            <Popup @projectAdded="snackbar = true"/>
+          <Popup @projectAdded="snackbar = true"/>
         </v-flex>
       </v-layout>
       <v-list>
@@ -56,6 +56,8 @@
 
 <script>
 import Popup from "./Popup";
+import { auth } from "@/fb";
+
 export default {
   components: { Popup },
   data() {
@@ -68,6 +70,19 @@ export default {
       ],
       snackbar: false
     };
+  },
+  methods: {
+    signOut() {
+      auth.signOut().then(
+          function() {
+            console.log('Sign-out successful.');
+            document.location.reload(true);
+          },
+          function(error) {
+            console.log(error);
+          }
+        );
+    }
   }
 };
 </script>
